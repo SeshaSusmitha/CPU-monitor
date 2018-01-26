@@ -10,15 +10,13 @@ $ docker-compose up -d
 
 docker-compose builds the entire Grafana and Influx stack.
 
-The Grafana Dashboard is now accessible via: http://<Host IP Address>:3000 for example http://localhost:3000
+The Grafana Dashboard is now accessible via: http://Host-IP-Address>:3000 for example `http://localhost:3000`
 
 For [grafana](https://github.com/grafana/grafana-docker) user name and password are admin/admin
 
 ## Sample dashboard
 
 ![Grafana Dashboard for System Usage stats](images/SystemUsageDashboard.png)
-
-
 
 ## Checking logs
 
