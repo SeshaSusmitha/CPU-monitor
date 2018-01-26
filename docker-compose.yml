@@ -46,7 +46,6 @@ services:
     volumes:
       - ./kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
       - ./tickscripts:/tickscripts
-      - ./templates:/templates
     networks:
       - monitor
     environment:
