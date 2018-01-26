@@ -1,4 +1,4 @@
-# Influxdata getting started with dockers
+# Monitor cpu usage with influx, kapacitor and grafana
 
 ## Starting dockers
 
@@ -10,7 +10,7 @@ $ docker-compose up -d
 
 docker-compose builds the entire Grafana and Influx stack.
 
-The Grafana Dashboard is now accessible via: http://<Host IP Address>:3001 for example http://localhost:3001
+The Grafana Dashboard is now accessible via: http://<Host IP Address>:3000 for example http://localhost:3000
 
 For [grafana](https://github.com/grafana/grafana-docker) user name and password are admin/admin
 
