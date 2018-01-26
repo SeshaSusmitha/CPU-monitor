@@ -2,8 +2,6 @@
 
 ## Starting dockers
 
-Create a docker network named "infuxdb"
-
 ```s
 $ docker-compose up -d
 ```
