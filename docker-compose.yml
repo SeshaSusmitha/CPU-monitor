@@ -5,24 +5,24 @@ volumes:
   influx_data: {}
 
 networks:
-  sys_monit:
+  monitor:
 
 services:
   grafana:
-    container_name: sys_monit_grafana
+    container_name: monitor_grafana
     image: grafana/grafana
     ports:
-      - 3001:3000
+      - 3000:3000
     volumes:
       - ./grafana:/var/lib/grafana
       - grafana_data:/grafana
     links:
       - influxdb
     networks:
-      - sys_monit
+      - monitor
 
   influxdb:
-    container_name: sys_monit_influxdb
+    container_name: monitor_influxdb
     image: influxdb
     ports:
       - 8083:8083
@@ -32,14 +32,14 @@ services:
       - ./influxdb:/var/lib/influxdb
       - influx_data:/influxdb
     networks:
-      - sys_monit
+      - monitor
     links:
       - kapacitor
     environment:
       - INFLUXDB_ADMIN_ENABLED=true
     
   kapacitor:
-    container_name: sys_monit_kapacitor
+    container_name: monitor_kapacitor
     image: kapacitor
     ports:
       - 9092:9092
@@ -48,15 +48,15 @@ services:
       - ./tickscripts:/tickscripts
       - ./templates:/templates
     networks:
-      - sys_monit
+      - monitor
     environment:
-      - KAPACITOR_INFLUXDB_0_URLS_0=http://sys_monit_influxdb:8086
+      - KAPACITOR_INFLUXDB_0_URLS_0=http://monitor_influxdb:8086
 
   telegraf:
-    container_name: sys_monit_telegraf
+    container_name: monitor_telegraf
     image: telegraf
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
-      - sys_monit
+      - monitor
